@@ -37,23 +37,14 @@ docker run -d \
  --port 30333 \
  >/dev/null 2>&1 &
 
-output1=$(docker exec -it creditcoin-validator creditcoin-cli new)
-output1=${output1#"Seed phrase: "}
+output1=$(docker exec -it creditcoin-validator creditcoin-cli new | grep -oP '(?<=Seed phrase: ).*') && echo $output1 && docker exec -i creditcoin-validator creditcoin-cli show-address <<< $output1 && output2=$(docker exec -it creditcoin-validator creditcoin-cli new | grep -oP '(?<=Seed phrase: ).*') && echo $output2 && docker exec -i creditcoin-validator creditcoin-cli show-address <<< $output2
 
-output2=$(docker exec -it creditcoin-validator creditcoin-cli new)
-output2=${output2#"Seed phrase: "}
-
-echo "Seed phrase 1: $output1"
-echo "Seed phrase 2: $output2"
-
-docker exec -it creditcoin-validator creditcoin-cli show-address $output1
-docker exec -it creditcoin-validator creditcoin-cli show-address $output2
 
 read -p "Silakan untuk mentransfer ke dua alamat di atas dengan CTC minimal 1500 token. Jika sudah ditransfer, ketik Y: " transfer_confirmation
 
 if [[ $transfer_confirmation == "Y" ]]; then
-  docker exec -it creditcoin-validator creditcoin-cli wizard -a 1000 <<< $output1
-  docker exec -it creditcoin-validator creditcoin-cli wizard -a 1000 <<< $output2
+  docker exec -i creditcoin-validator creditcoin-cli wizard -a 1000 <<< $output1
+  docker exec -i creditcoin-validator creditcoin-cli wizard -a 1000 <<< $output2
 fi
 
 docker exec -it creditcoin-validator creditcoin-cli status -a $output1
