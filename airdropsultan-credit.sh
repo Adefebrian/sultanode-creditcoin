@@ -20,7 +20,7 @@
 # =======================================================
 
 read -p "Masukkan nama validator: " validatorname
-read -p "Masukkan alamat IP VPS Anda: " myip
+read -p "Masukkan IP VPS: " myip
 
 docker run -d \
  --name creditcoin-validator \
