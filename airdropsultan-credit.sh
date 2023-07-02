@@ -37,8 +37,11 @@ docker run -d \
  --port 30333 \
  >/dev/null 2>&1 &
 
-output1=$(docker exec -it creditcoin-validator creditcoin-cli new | sed 's/Seed phrase: //')
-output2=$(docker exec -it creditcoin-validator creditcoin-cli new | sed 's/Seed phrase: //')
+output1=$(docker exec -it creditcoin-validator creditcoin-cli new)
+output1=${output1#"Seed phrase: "}
+
+output2=$(docker exec -it creditcoin-validator creditcoin-cli new)
+output2=${output2#"Seed phrase: "}
 
 echo "Seed phrase 1: $output1"
 echo "Seed phrase 2: $output2"
