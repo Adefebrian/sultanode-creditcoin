@@ -49,6 +49,7 @@ if [[ $transfer_confirmation == "Y" ]]; then
     expect \"Input kedua:\"
     send \"$output2\n\"
     interact
+    wait
   "
   sleep 2  # Jeda waktu sebelum menjalankan perintah selanjutnya
 fi
