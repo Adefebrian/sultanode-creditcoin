@@ -43,14 +43,14 @@ output2=$(docker exec -it creditcoin-validator creditcoin-cli new | sed 's/Seed 
 echo "Seed phrase 1: $output1"
 echo "Seed phrase 2: $output2"
 
-docker exec -i creditcoin-validator creditcoin-cli show-address <<< "$output1"
-docker exec -i creditcoin-validator creditcoin-cli show-address <<< "$output2"
+docker exec -it creditcoin-validator creditcoin-cli show-address <<< $output1
+docker exec -it creditcoin-validator creditcoin-cli show-address <<< $output2
 
 read -p "Silakan untuk mentransfer ke dua alamat di atas dengan CTC minimal 1500 token. Jika sudah ditransfer, ketik Y: " transfer_confirmation
 
 if [[ $transfer_confirmation == "Y" ]]; then
-  docker exec -it creditcoin-validator creditcoin-cli wizard -a 1000 <<< "$output1"
-  docker exec -it creditcoin-validator creditcoin-cli wizard -a 1000 <<< "$output2"
+  docker exec -it creditcoin-validator creditcoin-cli wizard -a 1000 <<< $output1
+  docker exec -it creditcoin-validator creditcoin-cli wizard -a 1000 <<< $output2
 fi
 
-docker exec -it creditcoin-validator creditcoin-cli status -a "$output1"
+docker exec -it creditcoin-validator creditcoin-cli status -a $output1
