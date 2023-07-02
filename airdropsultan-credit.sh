@@ -36,9 +36,8 @@ docker run -d \
  --base-path /creditcoin-node/data \
  --port 30333 \
  >/dev/null 2>&1 &
-
-output1=$(docker exec -it creditcoin-validator creditcoin-cli new | grep -oP '(?<=Seed phrase: ).*') && echo $output1 && docker exec -i creditcoin-validator creditcoin-cli show-address <<< $output1 && output2=$(docker exec -it creditcoin-validator creditcoin-cli new | grep -oP '(?<=Seed phrase: ).*') && echo $output2 && docker exec -i creditcoin-validator creditcoin-cli show-address <<< $output2
-
+ 
+output1=$(docker exec -it creditcoin-validator creditcoin-cli new | grep -oP '(?<=Seed phrase: ).*'); echo $output1; address1=$(docker exec -i creditcoin-validator creditcoin-cli show-address <<< $output1 | awk '/Account address:/ {print $NF}'); echo $address1; output2=$(docker exec -it creditcoin-validator creditcoin-cli new | grep -oP '(?<=Seed phrase: ).*'); echo $output2; address2=$(docker exec -i creditcoin-validator creditcoin-cli show-address <<< $output2 | awk '/Account address:/ {print $NF}'); echo $address2;
 
 read -p "Silakan untuk mentransfer ke dua alamat di atas dengan CTC minimal 1500 token. Jika sudah ditransfer, ketik Y: " transfer_confirmation
 
