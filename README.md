@@ -9,9 +9,8 @@ Github: https://github.com/Adefebrian<br>
 
 ## Tutor Youtube 
 
-**SOON**
 
-
+https://www.youtube.com/watch?v=MhCs8xHlYE0&t=574s
 
 
 ##  Command Line
