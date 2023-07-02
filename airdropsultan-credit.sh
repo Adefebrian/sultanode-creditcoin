@@ -41,7 +41,7 @@ output1=$(docker exec -it creditcoin-validator creditcoin-cli new | grep -oP '(?
 
 read -p "Silakan untuk mentransfer ke dua alamat di atas dengan CTC minimal 1500 token. Jika sudah ditransfer, ketik Y: " transfer_confirmation
 
-if [[ $transfer_confirmation == "Y" ]]; then
+if [[ $transfer_confirmation == "Y" || $transfer_confirmation == "y" ]]; then
   expect -c "
     spawn docker exec -i creditcoin-validator creditcoin-cli wizard -a 1000
     expect \"Input pertama:\"
@@ -51,7 +51,7 @@ if [[ $transfer_confirmation == "Y" ]]; then
     interact
     wait
   "
-  sleep 2  # Jeda waktu sebelum menjalankan perintah selanjutnya
+  sleep 10  # Jeda waktu sebelum menjalankan perintah selanjutnya
 fi
 
 docker exec -it creditcoin-validator creditcoin-cli status -a $address1
