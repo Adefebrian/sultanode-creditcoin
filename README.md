@@ -1,10 +1,10 @@
 #  AIRDROP SULTAN INDONESIA - Credit Coin
 ##  SOCIAL MEDIA
- Author: Ade Febrian
-Telegram Channel: https://www.t.me/@airdropsultanindonesia
-Telegram Group: https://www.t.me/@airdropsultanid
- Github: https://github.com/Adefebrian
- Youtube: https://www.youtube.com/AdeFebrian
+ Author: Ade Febrian <br>
+Telegram Channel: https://www.t.me/@airdropsultanindonesia<br>
+Telegram Group: https://www.t.me/@airdropsultanid<br>
+Github: https://github.com/Adefebrian<br>
+ Youtube: https://www.youtube.com/AdeFebrian<br>
  Tiktok: https://www.tiktok.com/@airdropsultan.id
 
 ## Tutor Youtube 
